@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "911065474766",
+    "project_id": "loowlgin",
+    "storage_bucket": "loowlgin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911065474766:android:f4ccbc5c8adbb3638d129f",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911065474766-jq514bk1pc37kv521q0ivd2s8udo6daa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "5a799a797cc5d07de46c5f6ce3f988e50637b430"
+          }
+        },
+        {
+          "client_id": "911065474766-ed4ssqk277gp63ud8o7475p2faiuds7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM68DhAU8hDgt2SZOecygr1q395g6DaDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911065474766-ed4ssqk277gp63ud8o7475p2faiuds7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
