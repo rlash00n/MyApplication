@@ -30,9 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEtEmail, mEtPwd;
     private CheckBox chk_auto;
 
-    public SharedPreferences sp;
-    public SharedPreferences.Editor editor;
-
     public static Context context_login;
 
     @Override
@@ -42,14 +39,19 @@ public class LoginActivity extends AppCompatActivity {
 
         context_login = this;
 
-        sp = getSharedPreferences("temp", MODE_PRIVATE);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("fff");
 
-        if(sp.getBoolean("checkbox", false)){
-            String strEmail = sp.getString("email","");
-            String strPwd = sp.getString("pwd","");
-            SignIn(strEmail,strPwd);
+        mEtEmail = findViewById(R.id.et_email);
+        mEtPwd = findViewById(R.id.et_pwd);
+        chk_auto = findViewById(R.id.chk_auto);
+/*
+        if(MySharedPreferences.getPrefChecked(LoginActivity.context_login)) {
+            String strEmail = MySharedPreferences.getPrefEmail(LoginActivity.context_login);
+            String strPwd = MySharedPreferences.getPrefPwd(LoginActivity.context_login);
+            SignIn(strEmail, strPwd);
         }
-
+*/
         Button btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 //Login
-                SignIn(strEmail,strPwd);
+                SignIn(strEmail, strPwd);
             }
         });
 
@@ -104,12 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     if(mFirebaseAuth.getCurrentUser().isEmailVerified()){
                         if(chk_auto.isChecked()){
-                            sp = getSharedPreferences("temp", MODE_PRIVATE);
-                            editor = sp.edit();
-                            editor.putString("email", mEtEmail.getText().toString());
-                            editor.putString("pwd", mEtPwd.getText().toString());
-                            editor.putBoolean("checkbox", chk_auto.isChecked());
-                            editor.commit();
+                            MySharedPreferences.setPref(context_login, strEmail, strPwd,true);
                         }
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
